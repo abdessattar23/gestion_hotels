@@ -13,4 +13,17 @@ public class InmemoryClientRepo implements ClientRepository {
         Users.put(Client.getId(), Client);
         return Client;
     }
+
+    public Client find(UUID uuid) {
+        return Users.get(uuid);
+    }
+
+    public HashMap<UUID, Client> findAll() {
+        return Users;
+    }
+
+    public Client findByEmail(String email){
+        return Users.get(UUID.fromString(email));
+    }
+
 }
