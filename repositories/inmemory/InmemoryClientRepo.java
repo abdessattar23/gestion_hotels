@@ -3,8 +3,7 @@ package repositories.inmemory;
 import entities.Client;
 import repositories.ClientRepository;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class InmemoryClientRepo implements ClientRepository {
     private HashMap<UUID, Client> Users = new HashMap<>();
@@ -18,12 +17,12 @@ public class InmemoryClientRepo implements ClientRepository {
         return Users.get(uuid);
     }
 
-    public HashMap<UUID, Client> findAll() {
-        return Users;
+    public List<Client> findAll() {
+        return new ArrayList<>(Users.values());
     }
 
-    public Client findByEmail(String email){
-        return Users.get(UUID.fromString(email));
+    public Optional<Client> findByEmail(String email){
+        return Users.values().stream().filter(client -> client.getEmail().equalsIgnoreCase(email)).findFirst();
     }
 
 }

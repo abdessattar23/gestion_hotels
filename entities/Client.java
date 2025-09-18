@@ -7,18 +7,22 @@ public class Client {
     private String fullName;
     private String email;
     private String password;
+    private boolean isAdmin;
 
-    public Client(UUID id, String fullName, String email, String password){
+    public Client(UUID id, String fullName, String email, String password, boolean isAdmin){
         this.email = email;
         this.fullName = fullName;
         this.password = password;
         this.id = id;
+        this.isAdmin = isAdmin;
     }
     //not dupliacted just when id is not in param while creating user fhmtini
-    public Client(String fullName, String email, String password){
+    public Client(String fullName, String email, String password, boolean isAdmin){
         this.email = email;
         this.fullName = fullName;
         this.password = password;
+        this.isAdmin = isAdmin;
+        this.id = UUID.randomUUID();
     }
 
     public UUID getId() {
@@ -51,5 +55,12 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public boolean isAdmin() {return isAdmin;}
+    public void setAdmin(boolean admin) {this.isAdmin = admin;}
+
+    @Override
+    public String toString(){
+        return "name: " + fullName + " email" + email + " password: " + password + " id: " + id;
     }
 }
