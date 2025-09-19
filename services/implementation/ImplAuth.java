@@ -41,6 +41,8 @@ public class ImplAuth implements AuthService {
             throw new IllegalArgumentException("Account doesn't exist");
         }
         if(user.get().getPassword().equalsIgnoreCase(password)){
+            user.get().setConnected(true);
+            repository.save(user.get());
             return user;
         }
         throw new IllegalArgumentException("Password is incorrect !!");

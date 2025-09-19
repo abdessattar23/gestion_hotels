@@ -8,6 +8,7 @@ public class Client {
     private String email;
     private String password;
     private boolean isAdmin;
+    private boolean connected;
 
     public Client(UUID id, String fullName, String email, String password, boolean isAdmin){
         this.email = email;
@@ -15,6 +16,7 @@ public class Client {
         this.password = password;
         this.id = id;
         this.isAdmin = isAdmin;
+        this.connected = false;
     }
     //not dupliacted just when id is not in param while creating user fhmtini
     public Client(String fullName, String email, String password, boolean isAdmin){
@@ -53,11 +55,14 @@ public class Client {
         return password;
     }
 
+
     public void setPassword(String password) {
         this.password = password;
     }
     public boolean isAdmin() {return isAdmin;}
+    public boolean isConnected() {return connected;}
     public void setAdmin(boolean admin) {this.isAdmin = admin;}
+    public void setConnected(boolean connected) {this.connected = connected;}
 
     @Override
     public String toString(){
